@@ -1,6 +1,7 @@
 import { Stack, useRouter, useSegments } from "expo-router";
 import React, { useEffect, useState, createContext, useContext } from "react";
 
+
 interface AuthContextType { // es para definir el tipo del contexto de autenticación, q incluye el usuario actual, función para iniciar sesión y una función para cerrar sesió
   user: string | null;
   login: (u: string) => void;
@@ -29,15 +30,18 @@ export default function RootLayout() {
   }, []);
 
   useEffect(() => {
-    if (!mounted) return; // si el componente no esta montado, no hacemos nada
+    if (!mounted) return;
 
-    const inLogin = segments[0] === "login"; // verificamos si estamos en la pantalla de login
+    // Revisamos si el usuario está en 'login' O en 'register'
+    const inAuthGroup = segments[0] === "login" || segments[0] === "register";
 
-    if (!user && !inLogin) { // si no hay usuario autenticado y no estamos en la pantalla de login, redirigimos a login
+    if (!user && !inAuthGroup) {
+      // Si no hay usuario y NO está en login ni en registro, mandamos a login
       router.replace("/login");
     }
 
-    if (user && inLogin) {
+    if (user && inAuthGroup) {
+      // Si ya inició sesión y trata de entrar a login o registro, lo mandamos al home
       router.replace("/(tabs)");
     }
   }, [user, segments, mounted]);
@@ -54,6 +58,7 @@ export default function RootLayout() {
     >
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="login" />
+        <Stack.Screen name="register" />
         <Stack.Screen name="(tabs)" />
       </Stack>
     </AuthContext.Provider>

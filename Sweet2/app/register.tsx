@@ -1,26 +1,32 @@
+// Esta pantalla es para el registro de nuevos usarios 
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import { useAuth } from "./_layout";
-
-import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
-
-export default function LoginScreen() {
+export default function RegisterScreen() {
     const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { login } = useAuth();
     const router = useRouter();
-    const irARegistro = () => {
-        router.push("/register"); // Expo Router busca automáticamente app/register.tsx
-    };
 
-    const handleLogin = () => {
+    const handleRegister = () => {
+
         if (username.trim() === "") {
             alert("Por favor, ingresa un nombre de usuario.");
             return;
         }
-        login(username);
+        if (email.trim() === "") {
+            alert("Por favor, ingresa un correo electrónico.");
+            return;
+        }
+        if (password.trim() === "") {
+            alert("Por favor, ingresa una contraseña.");
+            return;
+        }
+        // Aquí podrías agregar lógica para registrar al usuario en tu backend
+        alert("Registro exitoso. Ahora puedes iniciar sesión.");
+        router.replace("/login"); // Redirige a la pantalla de login después del registro
     };
 
     return (
@@ -30,9 +36,8 @@ export default function LoginScreen() {
                     <Ionicons name="restaurant" size={50} color="white" />
                 </View>
                 <Text style={styles.title}>Sweet2</Text>
-                <Text style={styles.subtitle}>REPOSTERÍA ARTESANAL</Text>
+                <Text style={styles.subtitle}>REGISTRAR</Text>
             </View>
-
             <View style={styles.inputGroup}>
                 <Text style={styles.label}>NOMBRE DE USUARIO</Text>
                 <TextInput
@@ -44,11 +49,23 @@ export default function LoginScreen() {
                     autoCapitalize="none"
                 />
             </View>
-
+            <View style={styles.inputGroup}>
+                <Text style={styles.label}>CORREO ELECTRÓNICO</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="dani_chef@gmail.com"
+                    placeholderTextColor="#a09080"
+                    value={email}
+                    onChangeText={setEmail}
+                    autoCapitalize="none"
+                    keyboardType="email-address"
+                />
+            </View>
             <View style={styles.inputGroup}>
                 <Text style={styles.label}>CONTRASEÑA</Text>
                 <View style={styles.passwordContainer}>
                     <TextInput
+
                         style={[styles.input, { flex: 1, backgroundColor: "transparent" }]}
                         placeholder="********"
                         placeholderTextColor="#a09080"
@@ -59,13 +76,11 @@ export default function LoginScreen() {
                     <Ionicons name="eye-outline" size={20} color="#888" style={{ marginRight: 15 }} />
                 </View>
             </View>
-
-            <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                <Text style={styles.buttonText}>Iniciar sesión</Text>
+            <TouchableOpacity style={styles.button} onPress={handleRegister}>
+                <Text style={styles.buttonText}>Registrarse</Text>
             </TouchableOpacity>
-
-            <TouchableOpacity onPress={(halde) => router.push("/register")} style={{ marginTop: 20, alignItems: 'center' }}>
-                <Text style={styles.label}>¿No tienes cuenta? <Text style={{ color: '#d6834c' }}>Registrarte</Text></Text>
+            <TouchableOpacity onPress={() => router.replace("/login")}>
+                <Text style={styles.label}>¿Ya tienes una cuenta? Inicia sesión</Text>
             </TouchableOpacity>
         </View>
     );
