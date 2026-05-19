@@ -8,24 +8,27 @@
     "scheme": "sweet",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+
     "ios": {
       "supportsTablet": true
     },
+
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#ffffff",
-        "foregroundImage": "./assets/images/adaptive-icon.png"
+        "backgroundColor": "#F7EFE7",
+        "foregroundImage": "./assets/images/sweet-logo.png"
       },
       "edgeToEdgeEnabled": true
     },
+
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash.png",
-          "resizeMode": "cover",
-          "backgroundColor": "#ffffff"
+          "image": "./assets/images/sweet-logo.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#F7EFE7"
         }
       ]
     ]
