@@ -4,7 +4,7 @@
     "slug": "Sweet",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/icon_sweet.png",
     "scheme": "sweet",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -15,8 +15,8 @@
 
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#F7EFE7",
-        "foregroundImage": "./assets/images/sweet-logo.png"
+        "backgroundColor": "#EAD8C0",
+        "foregroundImage": "./assets/images/icon_sweet.png"
       },
       "edgeToEdgeEnabled": true
     },
@@ -26,9 +26,9 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/sweet-logo.png",
+          "image": "./assets/images/icon_sweet.png",
           "resizeMode": "contain",
-          "backgroundColor": "#F7EFE7"
+          "backgroundColor": "#EAD8C0"
         }
       ]
     ]

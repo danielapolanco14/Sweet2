@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { useAuth } from "./_layout";
 
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from "expo-router";
 
 
@@ -27,7 +27,7 @@ export default function LoginScreen() {
         <View style={styles.container}>
             <View style={styles.logoContainer}>
                 <View style={styles.iconBox}>
-                    <Ionicons name="restaurant" size={50} color="white" />
+                    <MaterialCommunityIcons name="cupcake" size={50} color="white" />
                 </View>
                 <Text style={styles.title}>Sweet2</Text>
                 <Text style={styles.subtitle}>REPOSTERÍA ARTESANAL</Text>
@@ -56,7 +56,7 @@ export default function LoginScreen() {
                         value={password}
                         onChangeText={setPassword}
                     />
-                    <Ionicons name="eye-outline" size={20} color="#888" style={{ marginRight: 15 }} />
+                    <MaterialCommunityIcons name="eye-outline" size={20} color="#888" style={{ marginRight: 15 }} />
                 </View>
             </View>
 
